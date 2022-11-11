@@ -3,5 +3,13 @@ describe('Pokedex', function() {
     cy.visit('http://localhost:5000')
     cy.contains('ivysaur')
     cy.contains('Pokémon and Pokémon character names are trademarks of Nintendo.')
+  }),
+  it('pokemon page can be navigated to', function() {
+    cy.visit('http://localhost:5000')
+    cy.contains('squirtle').click()
+    cy.location('pathname', { timeout: 60000 })
+      .should('include', '/squirtle')
+    cy.contains('rain dish')
   })
+
 })
