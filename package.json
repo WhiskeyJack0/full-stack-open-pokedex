@@ -3,7 +3,7 @@
     "node": "16.14.0"
   },
   "name": "fullstackopen-cicd",
-  "version": "1.0.0",
+  "version": "0.7.0",
   "description": "Full Stack Open",
   "main": "src/index.js",
   "scripts": {
@@ -17,17 +17,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smartlyio/fullstackopen-cicd.git"
+    "url": "git+https://github.com/WhiskeyJack0/full-stack-open-pokedex.git"
   },
   "keywords": [
     "fullstack-open"
   ],
-  "author": "Smartly.io",
+  "author": "WhiskyJack",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/smartlyio/fullstackopen-cicd/issues"
+    "url": "https://github.com/WhiskeyJack0/full-stack-open-pokedex/issues"
   },
-  "homepage": "https://github.com/smartlyio/fullstackopen-cicd#readme",
+  "homepage": "https://github.com/WhiskeyJack0/full-stack-open-pokedex#readme",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.8.0",
     "@testing-library/react": "^10.0.4",
