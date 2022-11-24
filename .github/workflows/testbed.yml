@@ -30,3 +30,6 @@ jobs:
       - name: test contains
         if: ${{ contains($COMMIT_MESSAGES_JOINED, "join") }}
         run: echo "join is present"
+      - name: test not contains
+        if: ${{ contains($COMMIT_MESSAGES_JOINED, "kafka") }}
+        run: echo "kafka is present"
