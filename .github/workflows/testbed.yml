@@ -31,5 +31,5 @@ jobs:
         if: ${{ contains(env.COMMIT_MESSAGES_JOINED, 'join') }}
         run: echo "join is present"
       - name: test not contains
-        if: ${{ contains(env.COMMIT_MESSAGES_JOINED, 'whiskyjack') }}
-        run: echo "whiskyjack is present"
+        if: ${{ contains(env.COMMIT_MESSAGES_JOINED, 'whiskeyjack') }}
+        run: echo "whiskeyjack is present"
