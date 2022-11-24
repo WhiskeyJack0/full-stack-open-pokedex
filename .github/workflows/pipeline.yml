@@ -34,17 +34,15 @@ jobs:
           build: npm run build
           start: npm run start-prod
           wait-on: http://localhost:5000
-  deploy:
-    if: ${{ github.event_name == 'push' }}
-    name: Deploy
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+      - name: setup flyctl
+        if: ${{ github.event_name == 'push' }}
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: deploy
+        if: ${{ github.event_name == 'push' }}
+        run: flyctl deploy --remote-only
   tag_release:
     if: ${{ github.event_name == 'push' }}
-    needs: [simple_deployment_pipeline, deploy]
+    needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     name: Bump version and push tag
     steps:
