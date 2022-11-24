@@ -27,7 +27,7 @@ jobs:
         run: echo "$COMMIT_MESSAGES_JOINED"
       - name: test contains
         if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
-        run: echo "will only run if skip is absent"
+        run: echo "will only run if `#skip` is absent"
       - name: test not contains
         if: ${{ contains(join(github.event.commits.*.message), '#skip') }}
-        run: echo "this will run even if skip is present"
+        run: echo "this will run even if `#skip` is present"
