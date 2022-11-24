@@ -9,6 +9,8 @@ on:
 jobs:
   a_test_job:
     runs-on: ubuntu-20.04
+    env:
+      COMMIT_MESSAGES_JOINED: ${{ join(github.event.commits.*.message) }}
     steps:
       - uses: actions/checkout@v2
       - name: github context
@@ -24,6 +26,7 @@ jobs:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
       - name: commit messages joined
-        env:
-          COMMIT_MESSAGES_JOINED: ${{ join(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES_JOINED"
+      - name: test contains
+        if: ${{ contains($COMMIT_MESSAGES_JOINED, "join") }}
+        run: echo "join is present"
