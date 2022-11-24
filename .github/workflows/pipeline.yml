@@ -14,7 +14,7 @@ env:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
-    name: Pre-deploy - lint, build, test
+    name: lint, build, test, deploy
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -46,6 +46,10 @@ jobs:
     runs-on: ubuntu-20.04
     name: Bump version and push tag
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: '0'
       - uses: anothrNick/github-tag-action@1.36.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
