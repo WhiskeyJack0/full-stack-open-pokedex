@@ -9,8 +9,6 @@ on:
 jobs:
   a_test_job:
     runs-on: ubuntu-20.04
-    env:
-      COMMIT_MESSAGES_JOINED: ${{ join(github.event.commits.*.message) }}
     steps:
       - uses: actions/checkout@v2
       - name: github context
@@ -28,8 +26,8 @@ jobs:
       - name: commit messages joined
         run: echo "$COMMIT_MESSAGES_JOINED"
       - name: test contains
-        if: ${{ !contains(env.COMMIT_MESSAGES_JOINED, '#skip') }}
+        if: ${{ !contains(join(github.event.commits.*.message), '#skip') }}
         run: echo "will only run if skip is absent"
       - name: test not contains
-        if: ${{ contains(env.COMMIT_MESSAGES_JOINED, '#skip') }}
+        if: ${{ contains(join(github.event.commits.*.message), '#skip') }}
         run: echo "this will run even if skip is present"
